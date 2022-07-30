@@ -82,16 +82,14 @@ class _HomePageState extends State<HomePage> {
                 child: Row(
                   children: [
                     const SizedBox(
-                      width: 10,
+                      width: 14,
                     ),
                     for (int i = 0; i < 10; i++) ...[
                       const SizedBox(
                         width: 2,
                       ),
                       const BookTile(
-                          img:
-                              "https://marketplace.canva.com/EAD7WuSVrt0/1/0/1003w/canva-colorful-illustration-young-adult-book-cover-LVthABb24ik.jpg",
-                          title: "Hypocrate world")
+                          img: "assets/book.jpg", title: "Hypocrate world")
                     ],
                     const SizedBox(
                       width: 4,
@@ -112,16 +110,14 @@ class _HomePageState extends State<HomePage> {
                 child: Row(
                   children: [
                     const SizedBox(
-                      width: 10,
+                      width: 14,
                     ),
                     for (int i = 0; i < 10; i++) ...[
                       const SizedBox(
                         width: 2,
                       ),
                       const BookTile(
-                          img:
-                              "https://marketplace.canva.com/EAD7WuSVrt0/1/0/1003w/canva-colorful-illustration-young-adult-book-cover-LVthABb24ik.jpg",
-                          title: "Hypocrate world")
+                          img: "assets/book.jpg", title: "Hypocrate world")
                     ],
                     const SizedBox(
                       width: 4,

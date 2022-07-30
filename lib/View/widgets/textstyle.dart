@@ -12,3 +12,19 @@ const cardStyle = TextStyle(
   fontWeight: FontWeight.w400,
   color: AppColor.black,
 );
+
+const bookTitleStyle = TextStyle(
+  fontSize: 24,
+  fontWeight: FontWeight.w800,
+  color: AppColor.black,
+);
+const autherStyle = TextStyle(
+  fontSize: 18,
+  fontWeight: FontWeight.w600,
+  color: AppColor.grey,
+);
+const buttonStyle = TextStyle(
+  fontSize: 18,
+  fontWeight: FontWeight.w600,
+  color: AppColor.white,
+);
