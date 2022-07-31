@@ -8,28 +8,25 @@ import 'package:secure/Model/book_model.dart';
 import 'package:secure/View/widgets/snackbar.dart';
 
 class BooksController {
-  List<BookModel> _bookList = [];
+  List<BookModel> _fictionBookList = [];
 
-  List<BookModel> getBookList() {
-    return _bookList;
-  }
-
-  Future<int> fetchBooks(ctx) async {
+  Future<Object> fetchBooks(apiEndpoint) async {
     try {
-      var response = await http.get(Uri.parse(ApiEndpoint.BOOKS));
+      var response = await http.get(Uri.parse(apiEndpoint));
       if (response.statusCode == 200) {
-        print(response.body);
-        _bookList.clear();
-        for (var each in jsonDecode(response.body)['items']) {
-          _bookList.add(BookModel.fromJson(each));
+        _fictionBookList.clear();
+        final items = jsonDecode(response.body)['items'];
+        for (var each in items) {
+          _fictionBookList.add(BookModel.fromJson(each));
         }
-        return 0;
+        print(_fictionBookList);
+        return _fictionBookList;
       } else {
         log(response.statusCode.toString());
         return 1;
       }
     } catch (e) {
-      log("Unable to fetch data" + e.toString());
+      log("Unable to fetch data$e");
       return 1;
     }
   }

@@ -62,10 +62,14 @@ class BookDetailPage extends StatelessWidget {
             const SizedBox(
               height: 4,
             ),
-            Text(
-              auther,
-              style: autherStyle,
-            ),
+            if (auther != null) ...[
+              for (var i in auther) ...[
+                Text(
+                  i ?? "Unknown",
+                  style: autherStyle,
+                )
+              ],
+            ],
             const SizedBox(
               height: 4,
             ),
@@ -73,7 +77,7 @@ class BookDetailPage extends StatelessWidget {
             Padding(
               padding: EdgeInsets.fromLTRB(16, 12, 16, 8),
               child: Text(
-                description,
+                description ?? "N/a",
                 textAlign: TextAlign.justify,
               ),
             )
