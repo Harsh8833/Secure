@@ -1,12 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:secure/View/widgets/back_button.dart';
 import 'package:secure/View/widgets/primary_button.dart';
 import 'package:secure/View/widgets/textstyle.dart';
 
 class BookDetailPage extends StatelessWidget {
-  const BookDetailPage({Key? key}) : super(key: key);
+  final title;
+  final img;
+  final auther;
+  final description;
+
+  const BookDetailPage(
+      {Key? key,
+      required this.title,
+      required this.img,
+      required this.auther,
+      required this.description})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -19,6 +31,13 @@ class BookDetailPage extends StatelessWidget {
           children: [
             Stack(
               children: [
+                Positioned(
+                    top: -totalHeight * 0.1,
+                    left: -totalWidth * 0.2,
+                    child: SvgPicture.asset(
+                      'assets/detail_bg.svg',
+                      width: totalWidth * 1.2,
+                    )),
                 Align(
                   alignment: Alignment.center,
                   child: Container(
@@ -26,12 +45,8 @@ class BookDetailPage extends StatelessWidget {
                     height: totalHeight * 0.5,
                     decoration:
                         BoxDecoration(borderRadius: BorderRadius.circular(40)),
-                    child: Hero(
-                      tag: "booktile",
-                      child: ClipRRect(
-                          borderRadius: BorderRadius.circular(40),
-                          child: Image.asset("assets/book.jpg")),
-                    ),
+                    child: ClipRRect(
+                        borderRadius: BorderRadius.circular(40), child: img),
                   ),
                 ),
                 const AppBackButton()
@@ -40,19 +55,28 @@ class BookDetailPage extends StatelessWidget {
             const SizedBox(
               height: 20,
             ),
-            const Text(
-              "The Kings of Drugs",
+            Text(
+              title,
               style: bookTitleStyle,
             ),
             const SizedBox(
               height: 4,
             ),
-            const Text(
-              "NORA BARRETT",
+            Text(
+              auther,
               style: autherStyle,
             ),
+            const SizedBox(
+              height: 4,
+            ),
             AppPrimaryButton(onTap: () {}, text: "Read"),
-            const Text("")
+            Padding(
+              padding: EdgeInsets.fromLTRB(16, 12, 16, 8),
+              child: Text(
+                description,
+                textAlign: TextAlign.justify,
+              ),
+            )
           ],
         )),
       ),

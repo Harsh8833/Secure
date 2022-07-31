@@ -8,15 +8,29 @@ import 'package:secure/View/widgets/textstyle.dart';
 class BookTile extends StatelessWidget {
   final title;
   final img;
-  const BookTile({Key? key, required this.title, required this.img})
+  final description;
+  final auther;
+  const BookTile(
+      {Key? key,
+      required this.title,
+      required this.img,
+      required this.description,
+      required this.auther})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
       onTap: (() {
-        Navigator.push(context,
-            MaterialPageRoute(builder: (context) => const BookDetailPage()));
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) => BookDetailPage(
+                      img: img,
+                      title: title,
+                      description: description,
+                      auther: auther,
+                    )));
       }),
       child: Card(
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
@@ -27,8 +41,7 @@ class BookTile extends StatelessWidget {
               decoration:
                   BoxDecoration(borderRadius: BorderRadius.circular(12)),
               child: ClipRRect(
-                  borderRadius: BorderRadius.circular(12),
-                  child: Hero(tag: "booktile", child: Image.asset(img)))),
+                  borderRadius: BorderRadius.circular(12), child: img)),
           Padding(
             padding: const EdgeInsets.fromLTRB(8, 4, 8, 4),
             child: Text(
