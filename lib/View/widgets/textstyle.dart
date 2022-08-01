@@ -9,8 +9,8 @@ const heading = TextStyle(
 
 const cardStyle = TextStyle(
   fontSize: 14,
-  fontWeight: FontWeight.w400,
-  color: AppColor.black,
+  fontWeight: FontWeight.w600,
+  color: AppColor.primary,
 );
 
 const bookTitleStyle = TextStyle(
@@ -28,3 +28,9 @@ const buttonStyle = TextStyle(
   fontWeight: FontWeight.w600,
   color: AppColor.white,
 );
+
+const wordArtBookTitle = TextStyle(
+    fontSize: 50,
+    fontWeight: FontWeight.w900,
+    color: AppColor.white,
+    overflow: TextOverflow.fade);

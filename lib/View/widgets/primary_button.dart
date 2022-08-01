@@ -1,14 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:get/get.dart';
 import 'package:secure/Const/colors.dart';
 import 'package:secure/View/widgets/textstyle.dart';
 
 class AppPrimaryButton extends StatelessWidget {
-  final onTap;
+  Function()? onTap;
   final text;
-  const AppPrimaryButton({Key? key, required this.onTap, required this.text})
+  AppPrimaryButton({Key? key, required this.onTap, required this.text})
       : super(key: key);
 
   @override
@@ -20,9 +17,6 @@ class AppPrimaryButton extends StatelessWidget {
           text,
           style: buttonStyle,
         ),
-        onPressed: () {
-          ScaffoldMessenger.of(context)
-              .showSnackBar(const SnackBar(content: Text("Button Tapped")));
-        });
+        onPressed: onTap);
   }
 }

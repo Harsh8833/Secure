@@ -77,14 +77,13 @@ class _HomePageState extends State<HomePage> {
               const Padding(
                 padding: EdgeInsets.fromLTRB(16, 22, 0, 8),
                 child: Text(
-                  "Adventure",
+                  "Action",
                   style: heading,
                 ),
               ),
               ShowBooks(
                 booksController: _booksController,
-                future:
-                    _booksController.fetchBooks(ApiEndpoint.ADVENTURE_BOOKS),
+                future: _booksController.fetchBooks(ApiEndpoint.ACTION_BOOKS),
               ),
               const Padding(
                 padding: EdgeInsets.fromLTRB(16, 22, 0, 8),
@@ -137,33 +136,40 @@ class ShowBooks extends StatelessWidget {
         builder: ((context, snapshot) {
           if (snapshot.connectionState == ConnectionState.done) {
             if (snapshot.hasData) {
-              var data = snapshot.data as List<BookModel>;
-              print(data[0]);
-              return SingleChildScrollView(
-                scrollDirection: Axis.horizontal,
-                physics: const BouncingScrollPhysics(),
-                child: Row(
-                  children: [
-                    const SizedBox(
-                      width: 14,
-                    ),
-                    for (int i = 0; i < data.length; i++) ...[
+              if (snapshot.data == 1) {
+                return const Center(
+                  child: Text("Unable to fetch books"),
+                );
+              } else {
+                var data = snapshot.data as List<BookModel>;
+                return SingleChildScrollView(
+                  scrollDirection: Axis.horizontal,
+                  physics: const BouncingScrollPhysics(),
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
                       const SizedBox(
-                        width: 2,
+                        width: 14,
                       ),
-                      BookTile(
-                        img: Image.network(data[i].thumbnail),
-                        title: data[i].title,
-                        auther: data[i].authers,
-                        description: data[i].subtitle,
-                      )
+                      for (int i = 0; i < data.length; i++) ...[
+                        const SizedBox(
+                          width: 2,
+                        ),
+                        BookTile(
+                          img: data[i].thumbnail,
+                          title: data[i].title,
+                          auther: data[i].authers,
+                          description: data[i].subtitle,
+                          pageCount: data[i].pageCount,
+                        )
+                      ],
+                      const SizedBox(
+                        width: 4,
+                      ),
                     ],
-                    const SizedBox(
-                      width: 4,
-                    ),
-                  ],
-                ),
-              );
+                  ),
+                );
+              }
             } else {
               return const Center(
                 child: CircularProgressIndicator(),

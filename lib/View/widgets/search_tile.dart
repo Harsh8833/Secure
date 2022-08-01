@@ -9,12 +9,14 @@ class SearchBookTile extends StatelessWidget {
   final title;
   final auther;
   final description;
+  final pageCount;
   const SearchBookTile(
       {Key? key,
       required this.img,
       required this.auther,
       required this.title,
-      required this.description})
+      required this.description,
+      required this.pageCount})
       : super(key: key);
 
   @override
@@ -30,6 +32,7 @@ class SearchBookTile extends StatelessWidget {
                       title: title,
                       auther: auther,
                       description: description,
+                      pageCount: pageCount,
                     )));
       },
       child: Card(
@@ -41,7 +44,8 @@ class SearchBookTile extends StatelessWidget {
               decoration:
                   BoxDecoration(borderRadius: BorderRadius.circular(12)),
               child: ClipRRect(
-                  borderRadius: BorderRadius.circular(12), child: img)),
+                  borderRadius: BorderRadius.circular(12),
+                  child: Image.network(img))),
           Padding(
             padding: const EdgeInsets.all(12.0),
             child: Column(

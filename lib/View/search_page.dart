@@ -77,13 +77,14 @@ class _SearchPageState extends State<SearchPage> {
           SliverList(
             delegate:
                 SliverChildBuilderDelegate((BuildContext context, int index) {
-              return SearchBookTile(
-                img: Image.network(
-                    "https://i0.wp.com/www.thebooksatchel.com/wp-content/uploads/2020/07/follow-me-to-the-ground.jpg?w=980&ssl=1"),
+              return const SearchBookTile(
+                img:
+                    "https://i0.wp.com/www.thebooksatchel.com/wp-content/uploads/2020/07/follow-me-to-the-ground.jpg?w=980&ssl=1",
                 auther: "Sue Rainsford",
                 title: "Follow Me To Ground",
                 description:
                     "Commodo est labore tempor incididunt laborum laborum sunt adipisicing. Sit minim duis pariatur voluptate. Enim aliquip amet qui fugiat ex commodo sint sunt ea tempor et nulla deserunt et. Mollit id tempor excepteur sit eiusmod dolor. Esse sint duis voluptate ipsum velit irure est irure ad ea aliquip occaecat sit. Nostrud eu aute ullamco adipisicing.",
+                pageCount: 200,
               );
             }, childCount: 7),
           ),
